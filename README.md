@@ -5,7 +5,7 @@ I think [@pico8bot](https://twitter.com/pico8bot) on Twitter is pretty cool. Jus
 
 I looked at the original source code to find out how the `%` operator works, the colour palette, the number of frames, how `x` and `y` are set, and the width and height: https://github.com/Objelisks/picobot/blob/master/bot.js
 
-![Screenshot!](blob/master/screenshot.png)
+![Screenshot!](https://raw.githubusercontent.com/TazeTSchnitzel/pico8bot.php/master/screenshot.png)
 
 Capabilities
 ------------
