@@ -1,0 +1,14 @@
+{
+    "require": {
+        "php": "^7.0",
+        "ext-gd": "*"
+    },
+    "autoload": {
+        "files": [
+            "src/data.php"
+        ],
+        "psr-4": {
+            "ajf\\pico8bot\\": "src"
+        }
+    }
+}
