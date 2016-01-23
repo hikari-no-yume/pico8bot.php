@@ -12,10 +12,10 @@ class Compiler
             return '$' . $expression->getName();
         } else if ($expression instanceof AST\Operator) {
             $operatorTemplate = OPERATORS[$expression->getKind()]['expression'];
-            $leftString = '(' . $this->compileExpression($expression->getLeftOperand()) . ')';
-            $rightString = '(' . $this->compileExpression($expression->getRightOperand()) . ')';
+            $leftString = $this->compileExpression($expression->getLeftOperand());
+            $rightString = $this->compileExpression($expression->getRightOperand());
             $string = preg_replace(['/\$a/', '/\$b/'], [$leftString, $rightString], $operatorTemplate);
-            return $string;
+            return '(' . $string . ')';
         } else if ($expression instanceof AST\FunctionCall) {
             $argumentStrings = array_map([$this, 'compileExpression'], $expression->getArguments());
             $string = FUNCTIONS[$expression->getName()]['phpFunction'] . '(' . implode(',', $argumentStrings) . ')';
