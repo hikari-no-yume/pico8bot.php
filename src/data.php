@@ -21,7 +21,7 @@ const OPERATORS = [
     ],
     '%' => [
         'precedence' => 2,
-        'expression' => '\ajf\pico8bot\Evaluator::mod($a,$b)'
+        'expression' => 'fmod($a,$b)'
     ]
 ];
 

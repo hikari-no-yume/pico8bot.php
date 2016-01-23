@@ -25,6 +25,10 @@ class Renderer
 
     private $function;
 
+    private static function mod(float $a, float $b): int {
+        return (int)($a - $b * floor($a / $b));
+    }
+
     public function __construct(callable $function) {
         $this->function = $function;
     }
@@ -39,7 +43,7 @@ class Renderer
         for ($x = 0; $x < $width; $x++) {
             for ($y = 0; $y < $height; $y++) {
                 $value = ($this->function)(($x - $width / 2), ($y - $height / 2), $t);
-                \imageSetPixel($image, $x, $y, $palette[abs(floor($value)) % count($palette)]);
+                \imageSetPixel($image, $x, $y, $palette[self::mod(abs(floor($value)), count($palette))]);
             }
         }
 

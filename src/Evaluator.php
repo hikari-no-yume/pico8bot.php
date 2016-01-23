@@ -4,14 +4,6 @@ namespace ajf\pico8bot;
 
 class Evaluator
 {
-    // referenced from OPERATORS constant
-    public static function mod(float $a, float $b): float {
-        if ($b === 0) {
-            return NAN;
-        }
-        return $a - $b * floor(@($a / $b));
-    }
-
     public function evaluate(AST\Node $expression, array $environment): float {
         if ($expression instanceof AST\Constant) {
             return $expression->getValue();
