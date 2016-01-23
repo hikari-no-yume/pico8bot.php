@@ -146,6 +146,9 @@ class Parser
                 $tokens->dequeue();
                 $arguments = [];
                 for ($i = 0; $i < FUNCTIONS[$token->getContent()]['arity']; $i++) {
+                    if ($stack->isEmpty()) {
+                        throw new ParseException("Not enough arguments on stack for '{$token->getContent()}', some function is missing an argument");
+                    }
                     $arguments[] = $stack->pop();
                 }
                 // sin(1,2) would be [2 1 sin] on the stack
