@@ -145,9 +145,11 @@ class Parser
             } else if ($this->isFunctionName($token)) {
                 $tokens->dequeue();
                 $arguments = [];
-                for ($i = FUNCTIONS[$token->getContent()]['arity'] - 1; $i >= 0;  $i--) {
+                for ($i = 0; $i < FUNCTIONS[$token->getContent()]['arity']; $i++) {
                     $arguments[] = $stack->pop();
                 }
+                // sin(1,2) would be [2 1 sin] on the stack
+                $arguments = \array_reverse($arguments);
                 $stack->push(new AST\FunctionCall($token->getLine(), $token->getContent(), $arguments));
             } else {
                 throw new ParseException("Unexpected token {$token->getName()} on line {$token->getLine()}");
