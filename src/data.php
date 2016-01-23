@@ -39,7 +39,7 @@ const FUNCTIONS = [
         'phpFunction' => 'abs'
     ],
     'atan2' => [
-        'arity' => 1,
+        'arity' => 2,
         'phpFunction' => 'atan2'
     ],
     'sqrt' => [
